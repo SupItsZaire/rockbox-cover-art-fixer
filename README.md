@@ -44,3 +44,4 @@ just chuck all of your flacs and mp3 into one folder. the script just organizes 
 
 - script WILL ignore any png or differnt filetype cover images, fix is on the way soonish
 - script might break as i have had no one test this yet aside from me :D
+- script loops, just ctrl - c
