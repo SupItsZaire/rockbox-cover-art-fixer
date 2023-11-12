@@ -21,7 +21,7 @@ This script organizes files based on album tags, extracts the cover image out of
 ```bash
 pip install Pillow eyed3 mutagen
 ```
-Install FFmpeg. You can download it from the official FFmpeg website.
+Install FFmpeg. You can download it from the official [FFmpeg website](https://www.ffmpeg.org/).
 
 git clone https://github.com/SupItsZaire/rockbox-cover-art-fixer.git
 
