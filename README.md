@@ -31,7 +31,7 @@ cd your-repository
 
 Run the script with the command:
 ```bash
-python processandextract.py
+python rockboxalbumfix.py
 ```
 Select the root directory containing your music folders using the file dialog.
 
