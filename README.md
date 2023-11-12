@@ -19,7 +19,7 @@ This script organizes files based on album tags, extracts the cover image out of
 ## Installation
 
 ```bash
-   pip install Pillow eyed3 mutagen
+pip install Pillow eyed3 mutagen
 ```
 Install FFmpeg. You can download it from the official FFmpeg website.
 
