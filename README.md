@@ -23,9 +23,9 @@ pip install Pillow eyed3 mutagen
 ```
 Install FFmpeg. You can download it from the official FFmpeg website.
 
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/SupItsZaire/rockbox-cover-art-fixer.git
 
-cd your-repository
+cd rockbox-cover-art-fixer
 
 ## Usage
 
