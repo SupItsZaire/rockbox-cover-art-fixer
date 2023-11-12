@@ -1,6 +1,6 @@
 # rockbox-cover-art-fixer
-A collection of python scripts, to help with Rockbox cover art conversion 
-## WINDOWS ONLY AT THE MOMENT
+A Python script to help with Rockbox cover art conversion.
+## WINDOWS ONLY AT THE MOMENT, THIS MIGHT CHANGE YOUR FOLDER STRUCTURES IF YOUR ALBUMS AREN'T SORTED INTO FOLDERS
 
 This script organizes files based on album tags, extracts the cover image out of MP3 and FLAC files using ffmpeg and converts them to a 200x200 baseline .jpg in its respective directory.
 
@@ -35,3 +35,11 @@ python processandextract.py
 Select the root directory containing your music folders using the file dialog.
 
 The script will process the folders, extract cover art, and organize the music files.
+
+## BEST WAY TO USE THIS
+just chuck all of your flacs and mp3 into one folder. the script just organizes it neatly in folders :D
+
+## KNOWN ISSUES
+
+- script WILL ignore any png or differnt filetype cover images, fix is on the way soonish
+- script might break as i have had no one test this yet aside from me :D
