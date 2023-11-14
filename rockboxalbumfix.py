@@ -46,7 +46,6 @@ def organize_music_files(root_dir):
                 except Exception as e:
                     print(f"Error moving '{filename}' to '{sanitized_album_tag}' folder: {e}")
 
-                # Introduce a small delay (adjust the sleep time as needed)
                 time.sleep(0.1)
 
 def extract_cover_ffmpeg(directory, temp_folder):
@@ -64,28 +63,23 @@ def extract_cover_ffmpeg(directory, temp_folder):
             temp_folder_path = os.path.join(temp_folder, 'cover_extraction_temp')
 
             try:
-                # Create a temporary folder in the system's temp directory
                 os.makedirs(temp_folder_path, exist_ok=True)
 
-                # Run ffmpeg command to extract cover art and capture output
                 encoding = sys.stdout.encoding or 'utf-8'
                 temp_cover_path = os.path.join(temp_folder_path, 'cover.jpg')
                 print(f"Running ffmpeg command for '{flac_file_path}'")
                 result = subprocess.run(['ffmpeg', '-i', flac_file_path, temp_cover_path], text=True, capture_output=True, encoding=encoding)
 
-                # Print ffmpeg command output and error
                 print(f"\nffmpeg command output: {result.stdout}")
                 print(f"ffmpeg command error: {result.stderr}")
 
                 if result.returncode == 0:
-                    # Move the extracted cover image to the original directory
                     cover_dest_path = os.path.join(directory, 'cover.jpg')
                     shutil.move(temp_cover_path, cover_dest_path)
                     print(f"FLAC Cover image extracted and saved as baseline JPEG in {directory}")
             except Exception as e:
                 print(f"Error during extraction: {e}")
             finally:
-                # Do not remove the temporary folder and its contents this time
                 pass
 
         elif mp3_files:
@@ -93,28 +87,23 @@ def extract_cover_ffmpeg(directory, temp_folder):
             temp_folder_path = os.path.join(temp_folder, 'cover_extraction_temp')
 
             try:
-                # Create a temporary folder in the system's temp directory
                 os.makedirs(temp_folder_path, exist_ok=True)
 
-                # Run ffmpeg command to extract cover art and capture output
                 encoding = sys.stdout.encoding or 'utf-8'
                 temp_cover_path = os.path.join(temp_folder_path, 'cover.jpg')
                 print(f"Running ffmpeg command for '{mp3_file_path}'")
                 result = subprocess.run(['ffmpeg', '-i', mp3_file_path, temp_cover_path], text=True, capture_output=True, encoding=encoding)
 
-                # Print ffmpeg command output and error
                 print(f"\nffmpeg command output: {result.stdout}")
                 print(f"ffmpeg command error: {result.stderr}")
 
                 if result.returncode == 0:
-                    # Move the extracted cover image to the original directory
                     cover_dest_path = os.path.join(directory, 'cover.jpg')
                     shutil.move(temp_cover_path, cover_dest_path)
                     print(f"MP3 Cover image extracted and saved as baseline JPEG in {directory}")
             except Exception as e:
                 print(f"Error during extraction: {e}")
             finally:
-                # Do not remove the temporary folder and its contents this time
                 pass
 
 def restore_backups(root_dir):
@@ -137,6 +126,7 @@ def restore_backups(root_dir):
 
 def process_images(root_dir, iteration_timeout=5, max_retries=3):
     retries = 0
+    processed_folders = set()
     try:
         while retries <= max_retries:
             folders_processed = 0
@@ -146,6 +136,9 @@ def process_images(root_dir, iteration_timeout=5, max_retries=3):
                     dirs.remove(".rockbox")
 
                 cover_path = os.path.join(root, 'cover.jpg')
+
+                if root in processed_folders:
+                    continue
 
                 if os.path.exists(cover_path) and os.path.getsize(cover_path) > 0:
                     print(f"\nProcessing folder: {root}")
@@ -169,10 +162,11 @@ def process_images(root_dir, iteration_timeout=5, max_retries=3):
                 else:
                     extract_cover_ffmpeg(root, os.path.join(os.getenv('TEMP'), 'cover_extraction_temp'))
                     folders_processed += 1
+                    processed_folders.add(root)
 
             if folders_processed > 0:
                 print(f"\n{folders_processed} folder(s) processed.")
-                retries = 0  # Reset retry count if folders were processed
+                retries = 0
             else:
                 print("\nNo folders to process. Exiting.")
                 break
@@ -183,11 +177,9 @@ def process_images(root_dir, iteration_timeout=5, max_retries=3):
         print("\nProcessing interrupted by user.")
 
 if __name__ == "__main__":
-    # Create a Tkinter root window, but don't display it
     root = tk.Tk()
     root.withdraw()
 
-    # Ask the user to select the root directory using a folder dialog
     root_directory = filedialog.askdirectory(title="Select Root Directory")
 
     if not root_directory:
