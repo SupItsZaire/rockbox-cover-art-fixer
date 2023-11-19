@@ -51,8 +51,6 @@ def organize_music_files(root_dir):
 def extract_cover_ffmpeg(directory, temp_folder):
     print(f"\nChecking directory: {directory}")
     files = os.listdir(directory)
-    flac_files = [file for file in files if file.endswith('.flac')]
-    mp3_files = [file for file in files if file.endswith('.mp3')]
 
     if 'cover.jpg' in files:
         print(f"Cover image found in {directory}")
@@ -198,6 +196,16 @@ def process_images(root_dir, iteration_timeout=5, max_retries=3):
 
     except KeyboardInterrupt:
         print("\nProcessing interrupted by user.")
+
+def clear_temp_directory():
+    temp_folder = os.getenv('TEMP')
+    temp_folder_path = os.path.join(temp_folder, 'cover_extraction_temp', 'cover_extraction_temp')
+
+    if os.path.exists(temp_folder_path):
+        shutil.rmtree(temp_folder_path)
+        print(f"Cleared directory: {temp_folder_path}")
+    else:
+        print(f"Directory does not exist: {temp_folder_path}")
 
 if __name__ == "__main__":
     root = tk.Tk()
