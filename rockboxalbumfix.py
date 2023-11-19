@@ -51,11 +51,34 @@ def organize_music_files(root_dir):
 def extract_cover_ffmpeg(directory, temp_folder):
     print(f"\nChecking directory: {directory}")
     files = os.listdir(directory)
+    flac_files = [file for file in files if file.endswith('.flac')]
+    mp3_files = [file for file in files if file.endswith('.mp3')]
 
     if 'cover.jpg' in files:
         print(f"Cover image found in {directory}")
     else:
-        flac_files = [file for file in files if file.endswith('.flac')]
+        image_files = [file for file in files if file.lower().endswith(('.jpg', '.jpeg', '.png'))]
+
+        if image_files:
+            print("Image files found in the directory:")
+            for i, image_file in enumerate(image_files, start=1):
+                print(f"{i}. {image_file}")
+
+            selected_index = int(input("Enter the number of the image file you want to use as the cover image: ")) - 1
+            selected_image_file = image_files[selected_index]
+
+            cover_dest_path = os.path.join(directory, 'cover.jpg')
+            shutil.move(os.path.join(directory, selected_image_file), cover_dest_path)
+            print(f"Selected image file '{selected_image_file}' set as cover image.")
+
+            # Delete other image files
+            for image_file in image_files:
+                if image_file != selected_image_file:
+                    os.remove(os.path.join(directory, image_file))
+                    print(f"Deleted redundant image file '{image_file}'.")
+
+        else:
+         flac_files = [file for file in files if file.endswith('.flac')]
         mp3_files = [file for file in files if file.endswith('.mp3')]
 
         if flac_files:
