@@ -9,6 +9,7 @@ This script organizes files based on album tags, extracts the cover image out of
 - **FLAC Cover Extraction:** Extracts cover images embedded in FLAC files and saves them as JPEGs.
 - **MP3 Album Cover Processing:** Retrieves album cover information from MP3 files and processes them.
 - **Standardized Cover Images:** Ensures cover images are in a standardized format (e.g., baseline JPEG, 200x200 pixels).
+- **Selectable Preferred Cover** If there are more is more than one image in an album folder, the user can choose the preferred one!
 
 ## Prerequisites
 
@@ -43,6 +44,4 @@ The script will process the folders, extract cover art, and organize the music f
 just chuck all of your flacs and mp3 into one folder. the script just organizes it neatly in folders :D
 
 ## KNOWN ISSUES
-
-- script WILL ignore any png or differnt filetype cover images, fix is on the way soonish
 - script might break as i have had no one test this yet aside from me :D
