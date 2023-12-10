@@ -237,7 +237,7 @@ def process_images(root_dir, iteration_timeout=5, max_retries=3):
 
 
 def clear_temp_directory():
-    temp_folder = os.getenv("TEMP")
+    temp_folder = tempfile.gettempdir()
     temp_folder_path = os.path.join(
         temp_folder, "cover_extraction_temp", "cover_extraction_temp"
     )
