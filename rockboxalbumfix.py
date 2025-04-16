@@ -91,6 +91,7 @@ def extract_cover_ffmpeg(directory, temp_folder):
                 if image_file != selected_image_file:
                     os.remove(os.path.join(directory, image_file))
                     print(f"Deleted redundant image file '{image_file}'.")
+            flac_files = None
 
         else:
             flac_files = [file for file in files if file.endswith(".flac")]
