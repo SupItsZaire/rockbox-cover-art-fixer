@@ -5,6 +5,7 @@
 A Python script to help with Rockbox cover art conversion.
 
 > ⚠️ **This repository is archived and read-only.**
+> 
 > Development has been moved to **Codeberg** for the forseeable future:
 > https://codeberg.org/supitszaire/rockbox-cover-art-fixer
 >
