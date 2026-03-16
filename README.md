@@ -1,5 +1,16 @@
+![Archived](https://img.shields.io/badge/status-archived-lightgrey?style=for-the-badge)
+[![Moved to Codeberg](https://img.shields.io/badge/moved%20to-Codeberg-2185d0?style=for-the-badge\&logo=codeberg)](https://codeberg.org/supitszaire/rockbox-cover-art-fixer)
+
 # rockbox-cover-art-fixer
 A Python script to help with Rockbox cover art conversion.
+
+> ⚠️ **This repository is archived and read-only.**
+> Development has been moved to **Codeberg** for the forseeable future:
+> https://codeberg.org/supitszaire/rockbox-cover-art-fixer
+>
+> The move was made due to GitHub platform changes (including CI costs and other ecosystem decisions that I do not endorse or like).
+> Please use the Codeberg version for the latest code, issues, and contributions.
+
 ## WINDOWS ONLY AT THE MOMENT, THIS MIGHT CHANGE YOUR FOLDER STRUCTURES IF YOUR ALBUMS AREN'T SORTED INTO FOLDERS
 
 This script organizes files based on album tags, extracts the cover image out of MP3 and FLAC files using ffmpeg and converts them to a 200x200 baseline .jpg in its respective directory.
